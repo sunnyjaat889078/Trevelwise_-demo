@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore destination guides and estimate your travel budget with TravelWise. Compare budget, mid-range and luxury travel costs.">
+  <meta name="keywords" content="travel guide, travel budget calculator, country travel information, hotels, food, transport">
+  <meta name="theme-color" content="#0b5d52">
+  <title>TravelWise — Explore More, Spend Smarter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#" aria-label="TravelWise home"><span class="brand-mark">✦</span> travel<span>wise</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+  <nav id="mainNav">
+    <a href="#destinations">Destinations</a><a href="#planner">Budget planner</a><a href="#about">About</a>
+    <a class="nav-cta" href="#planner">Plan my trip <span>↗</span></a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow light">YOUR NEXT CHAPTER STARTS HERE</span>
+    <h1>Explore more.<br><em>Spend smarter.</em></h1>
+    <p>Discover remarkable places, local experiences and realistic trip budgets — all in one simple travel guide.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="#destinations">Explore destinations <span>→</span></a><a class="text-link" href="#planner">Calculate my budget ↓</a></div>
+    <div class="hero-note"><span class="live-dot"></span> 8 destinations ready to explore</div>
+  </div>
+  <div class="hero-card"><span class="mini-label">TRAVEL BETTER</span><strong>Your journey,<br>your budget.</strong><span class="card-spark">✳</span></div>
+</section>
+
+<section class="trust-strip">
+  <div><strong>8</strong><span>destination guides</span></div><div><strong>3</strong><span>travel styles</span></div><div><strong>5</strong><span>cost categories</span></div><div><strong>1</strong><span>easy trip planner</span></div>
+</section>
+
+<section class="section destinations-section" id="destinations">
+  <div class="section-heading">
+    <div><span class="eyebrow">FIND YOUR SOMEWHERE</span><h2>Places worth<br><em>the journey.</em></h2></div>
+    <p>From ancient wonders to tropical escapes, find practical information to help make your next trip a great one.</p>
+  </div>
+  <div class="filter-row">
+    <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search a destination..." aria-label="Search destinations"></label>
+    <div class="filter-buttons" id="regionFilters">
+      <button class="filter active" data-region="All">All places</button><button class="filter" data-region="Africa">Africa</button><button class="filter" data-region="Asia">Asia</button><button class="filter" data-region="Islands">Islands</button>
+    </div>
+  </div>
+  <div class="destination-grid" id="destinationGrid"></div>
+</section>
+
+<section class="planner-section" id="planner">
+  <div class="planner-intro">
+    <span class="eyebrow light">MAKE THE NUMBERS WORK</span>
+    <h2>Your trip.<br><em>Your budget.</em></h2>
+    <p>Choose a destination, set your travel days and pick the comfort level that suits you. Your estimated costs update instantly.</p>
+    <div class="planner-points"><div><span>✓</span> Clear cost breakdown</div><div><span>✓</span> Three travel styles</div><div><span>✓</span> Estimates shown in USD</div></div>
+    <small class="disclaimer">Planning estimates only. Actual prices vary by season, availability, exchange rates and personal choices.</small>
+  </div>
+  <div class="calculator-card">
+    <div class="calc-top"><div><span class="eyebrow">TRIP COST ESTIMATOR</span><h3>Build your estimate</h3></div><span class="calc-icon">✳</span></div>
+    <div class="form-grid">
+      <div class="field full"><label for="countrySelect">Where are you going?</label><select id="countrySelect"></select></div>
+      <div class="field"><label for="daysInput">How many days?</label><div class="number-control"><button id="daysMinus" type="button" aria-label="Decrease days">−</button><input id="daysInput" type="number" min="1" max="90" value="7"><button id="daysPlus" type="button" aria-label="Increase days">+</button></div></div>
+      <div class="field"><label for="travelersInput">Travelers</label><div class="number-control"><button id="travMinus" type="button" aria-label="Decrease travelers">−</button><input id="travelersInput" type="number" min="1" max="20" value="1"><button id="travPlus" type="button" aria-label="Increase travelers">+</button></div></div>
+    </div>
+    <div class="field"><label>Choose your travel style</label>
+      <div class="tier-options">
+        <button class="tier active" data-tier="budget"><span class="tier-emoji">🎒</span><strong>Budget</strong><small>Keep it simple</small></button>
+        <button class="tier" data-tier="mid"><span class="tier-emoji">🧭</span><strong>Mid-range</strong><small>More comfort</small></button>
+        <button class="tier" data-tier="luxury"><span class="tier-emoji">✧</span><strong>Luxury</strong><small>Travel in style</small></button>
+      </div>
+    </div>
+    <div class="estimate-result">
+      <div class="estimate-head"><span>ESTIMATED TOTAL</span><span class="estimate-days" id="estimateMeta">7 days · 1 traveler</span></div>
+      <div class="total" id="totalCost">$0</div><div class="per-person" id="perPerson"></div>
+      <div class="cost-list" id="costBreakdown"></div>
+      <button class="btn btn-dark full-btn" id="copyEstimate">Copy my estimate <span>↗</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section" id="about">
+  <div class="guide-image"><div class="guide-stamp">GO<br>FAR<br>✳</div></div>
+  <div class="guide-copy"><span class="eyebrow">A LITTLE MORE PREPARED</span><h2>Good trips start<br>with <em>good planning.</em></h2><p>TravelWise brings useful destination basics and simple budget planning together, so you can spend less time guessing and more time looking forward to the journey.</p><div class="guide-stats"><div><strong>01</strong><span>Discover a place</span></div><div><strong>02</strong><span>Compare your budget</span></div><div><strong>03</strong><span>Plan with confidence</span></div></div><a class="inline-link" href="#destinations">Find your destination <span>→</span></a></div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-main"><a class="brand footer-brand" href="#"><span class="brand-mark">✦</span> travel<span>wise</span></a><p>Curious places. Clear plans.<br>Better journeys.</p><a href="#planner" class="footer-link">Start planning ↑</a></div>
+  <div class="footer-bottom"><span>© <span id="year"></span> TravelWise. Demo travel guide.</span><span>Travel thoughtfully. Leave a little wonder behind.</span></div>
+</footer>
+
+<div class="modal-backdrop" id="countryModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <div class="modal-cover" id="modalCover"></div>
+    <div class="modal-body"><span class="eyebrow" id="modalRegion"></span><h2 id="modalTitle"></h2><p id="modalDescription"></p>
+      <div class="facts-grid" id="modalFacts"></div>
+      <h3>Places to explore</h3><div class="place-chips" id="modalPlaces"></div>
+      <h3>Local highlights</h3><div class="highlight-grid" id="modalHighlights"></div>
+      <a class="btn btn-primary modal-plan" href="#planner" id="modalPlan">Estimate this trip →</a>
+      <div class="map-wrap"><iframe id="countryMap" title="Destination map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</div>
+
+<a class="whatsapp" href="https://wa.me/?text=Hello%20TravelWise%2C%20I%20have%20a%20travel%20question." target="_blank" rel="noopener" aria-label="Contact on WhatsApp">✆</a>
+<script src="js/countries.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

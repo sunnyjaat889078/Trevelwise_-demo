@@ -4,7 +4,17 @@ const countrySelect = $("#countrySelect");
 let activeRegion = "All";
 let activeTier = "budget";
 
-const money = n => new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(n);
+let displayCurrency = "USD";
+const USD_TO_INR = 94.12;
+
+const money = n => new Intl.NumberFormat(
+  displayCurrency === "INR" ? "en-IN" : "en-US",
+  {
+    style: "currency",
+    currency: displayCurrency,
+    maximumFractionDigits: 0
+  }
+).format(displayCurrency === "INR" ? n * USD_TO_INR : n);
 const titleCase = s => s.charAt(0).toUpperCase()+s.slice(1);
 
 function renderCards(){
@@ -69,6 +79,10 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
 $("#modalPlan").addEventListener("click",closeModal);
 document.querySelectorAll(".tier").forEach(b=>b.addEventListener("click",()=>{activeTier=b.dataset.tier;document.querySelectorAll(".tier").forEach(x=>x.classList.toggle("active",x===b));calculate();}));
 ["countrySelect","daysInput","travelersInput"].forEach(id=>$("#"+id).addEventListener("input",calculate));
+$("#currencySelect").addEventListener("change", e => {
+  displayCurrency = e.target.value;
+  calculate();
+});
 function step(id,delta,min,max){const el=$("#"+id);el.value=Math.max(min,Math.min(max,(Number(el.value)||min)+delta));calculate();}
 $("#daysMinus").addEventListener("click",()=>step("daysInput",-1,1,90));
 $("#daysPlus").addEventListener("click",()=>step("daysInput",1,1,90));

@@ -98,3 +98,23 @@ $("#menuToggle").addEventListener("click",()=>$("#mainNav").classList.toggle("op
 document.querySelectorAll("#mainNav a").forEach(a=>a.addEventListener("click",()=>$("#mainNav").classList.remove("open")));
 $("#year").textContent=new Date().getFullYear();
 fillSelect();renderCards();calculate();
+// TravelWise Contact Form
+const contactForm = $("#contactForm");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = $("#contactName").value.trim();
+    const email = $("#contactEmail").value.trim();
+    const message = $("#contactMessage").value.trim();
+
+    const whatsappMessage =
+      `Hello TravelWise!\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+
+    const whatsappURL =
+      "https://wa.me/?text=" + encodeURIComponent(whatsappMessage);
+
+    window.open(whatsappURL, "_blank");
+  });
+}

@@ -64,6 +64,20 @@ function showCountry(id){
   $("#modalHighlights").innerHTML=[
     ["Food to try",c.food.join(" · ")],["Transport",c.transport.join(" · ")],["Culture",c.culture]
   ].map(([a,b])=>`<div class="highlight"><strong>${a}</strong><br>${b}</div>`).join("");
+  const travelTips = {
+  egypt: ["Carry drinking water while sightseeing.", "Check monument opening hours before visiting.", "Agree on transport fares before your journey."],
+  morocco: ["Dress respectfully when visiting religious places.", "Ask permission before photographing people.", "Confirm market prices before buying."],
+  mauritius: ["Check weather conditions before beach activities.", "Carry sun protection during outdoor visits.", "Confirm transport arrangements in advance."],
+  botswana: ["Follow park and wildlife guide instructions.", "Carry suitable clothing for changing weather.", "Check safari timings before your visit."],
+  rwanda: ["Respect local customs and traditions.", "Check local travel rules before your journey.", "Keep your important documents secure."],
+  namibia: ["Plan travel distances in advance.", "Carry water during long road journeys.", "Check road conditions before travelling."],
+  vietnam: ["Keep some local currency for small purchases.", "Check transport fares before travelling.", "Respect local customs at temples."],
+  malaysia: ["Carry light clothing for warm weather.", "Check local transport options.", "Respect local customs at religious sites."]
+};
+
+$("#modalTips").innerHTML = (travelTips[c.id] || []).map(tip =>
+  `<div class="highlight"><strong>Travel tip</strong><br>${tip}</div>`
+).join("");
   $("#countryMap").src=`https://www.google.com/maps?q=${encodeURIComponent(c.map)}&output=embed`;
   $("#countrySelect").value=c.id; calculate();
   const modal=$("#countryModal"); modal.classList.add("open"); modal.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden";

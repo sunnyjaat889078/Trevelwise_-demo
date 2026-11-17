@@ -105,6 +105,7 @@ $("#travPlus").addEventListener("click",()=>step("travelersInput",1,1,20));
 $("#copyEstimate").addEventListener("click",async()=>{
  const r=calculate();
  const lines=[`TravelWise estimate — ${r.country}`,`${r.days} days · ${r.travelers} traveler(s) · ${r.tier}`, ...Object.entries(r.costs).map(([k,v])=>`${k}: ${money(v)}`),`Estimated total: ${money(r.total)}`,"Planning estimate only; actual prices vary."].join("\n");
+  lines.push("Planning estimate only — actual prices may vary by season, availability and personal choices.");
  try{await navigator.clipboard.writeText(lines);$("#copyEstimate").innerHTML="Copied ✓";setTimeout(()=>$("#copyEstimate").innerHTML='Copy my estimate <span>↗</span>',1800);}
  catch{window.prompt("Copy your estimate:",lines);}
 });
